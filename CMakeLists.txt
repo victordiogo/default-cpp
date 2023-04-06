@@ -12,7 +12,7 @@ set(bench_executable_name ${CMAKE_PROJECT_NAME}_BENCH)
 file(GLOB_RECURSE src_files CONFIGURE_DEPENDS src/*.cpp)
 file(GLOB_RECURSE test_files CONFIGURE_DEPENDS tests/*.cpp src/*.cpp)
 list(REMOVE_ITEM test_files ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
-ile(GLOB_RECURSE bench_files CONFIGURE_DEPENDS benchmarks/*.cpp src/*.cpp)
+file(GLOB_RECURSE bench_files CONFIGURE_DEPENDS benchmarks/*.cpp src/*.cpp)
 list(REMOVE_ITEM bench_files ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
 
 set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU,LCC>")
@@ -30,6 +30,7 @@ FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/f063cd25c90cbd4089a0ff96f5991df4f2721338.zip
 )
+
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
